@@ -9,7 +9,7 @@ You will need to create your own project. This project runs in test. Please foll
 The following scopes are used for this project: 
 
 - https://www.googleapis.com/auth/drive'
-- https://www.googleapis.com/auth/documents']
+- https://www.googleapis.com/auth/documents'
 
 <!-- (TODO - Reduce access to drives and docs to as limited as possible.) --> 
 
@@ -17,7 +17,7 @@ You'll need to ensure that the `credentials.json` file you are provided has thos
 enabled. 
 
 ## Getting Started
-- [Create Google Cloud Project and Setup Auth](#Google Cloud Project Setup) 
+- [Create Google Cloud Project and Setup Auth](#google-cloud-project-setup) 
 - install requirements
 `pip install -r requirements.txt`
 - create a new folder and planning doc

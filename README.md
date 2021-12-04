@@ -55,5 +55,6 @@ and the id of the template document to `COPY_DOC_ID` environment variable.
 
 To run enter `python create_new_docs.py [OPTIONS]`
 Here are the options available:
-`-c/--count`: Number of new Episode files to create.
-`-r/--replacement`: create a list of replacements, to update your template.
+
+- `-c/--count`: Number of new Episode files to create.
+- `-r/--replacement`: create a list of replacements, to update your template.

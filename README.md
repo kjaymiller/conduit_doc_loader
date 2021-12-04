@@ -8,8 +8,8 @@ You will need to create your own project. This project runs in test. Please foll
 
 The following scopes are used for this project: 
 
-- \https://www.googleapis.com/auth/drive\
-- \https://www.googleapis.com/auth/documents\
+- https://www.googleapis.com/auth/drive'
+- https://www.googleapis.com/auth/documents']
 
 <!-- (TODO - Reduce access to drives and docs to as limited as possible.) --> 
 
@@ -17,14 +17,20 @@ You'll need to ensure that the `credentials.json` file you are provided has thos
 enabled. 
 
 ## Getting Started
-- [Create Google Cloud Project and Setup Auth](#google-cloud-project-setup) 
+- [Create Google Cloud Project and Setup Auth](#Google Cloud Project Setup) 
 - install requirements
 `pip install -r requirements.txt`
 - create a new folder and planning doc
 `python create_new_docs.py`
 
+## Running Scripts from the Terminal
+The python scripts that are executable use a command line tool called
+[Typer](https://typer.tiangolo.com). You can interface with the scripts you need to call with
+`python <SCRIPT_FILENAME> [OPTIONS] ARGUMENTS`
+
+Use the `--help` option for more information.
 
 ## Creating New Docs
 Use `create_new_docs.py` to create a new 
-
+You can access the `help` for this script
 

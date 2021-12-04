@@ -2,6 +2,8 @@
 This project is used to create a new folder and planning document for
 [Conduit](https://relay.fm/conduit).
 
+![Conduit Folders](./assets/drive%20folder.png)
+
 ## Requirements
 - python (developed with python3.10 but should be compatible with 3.8+)
 - [Google Cloud Account](https://cloud.google.com)

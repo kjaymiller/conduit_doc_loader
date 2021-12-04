@@ -11,7 +11,7 @@ The following scopes are used for this project:
 - https://www.googleapis.com/auth/drive'
 - https://www.googleapis.com/auth/documents']
 
-// TODO - Reduce access to drives and docs to as limited as possible.
+[//] # (TODO - Reduce access to drives and docs to as limited as possible.)
 
 You'll need to ensure that the `credentials.json` file you are provided has those object
 enabled. 

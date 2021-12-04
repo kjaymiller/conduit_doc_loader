@@ -2,7 +2,20 @@
 This project is used to create a new folder and planning document for
 [Conduit](https://relay.fm/conduit).
 
+## Requirements
+- python (developed with python3.10 but should be compatible with 3.8+)
+- [Google Cloud Account](https://cloud.google.com)
+
 ## Google Cloud Project Setup
+### In Google Drive
+
+You will need a Parent folder. This is where all new folders will be created. 
+
+You'll also
+need a template file. This can be anywhere in Google Drive.
+
+
+### In Google Cloud Console
 In order to use this, you will need to create an new OAuth 2.0 setup. 
 You will need to create your own project. This project runs in test. Please follow the [cloud API instructions for setting up a new project and enabling OAuth2.0](TODO: Link)
 
@@ -31,6 +44,11 @@ The python scripts that are executable use a command line tool called
 Use the `--help` option for more information.
 
 ## Creating New Docs
-Use `create_new_docs.py` to create a new 
-You can access the `help` for this script
+Use `create_new_docs.py` to create a new folder with the planning doc.
 
+### BEFORE YOU RUN
+<!-- TODO: Switch to Secrets --> 
+Add the id of the parent folder to the PARENT_FOLDER_ID   environment variable
+and the id of the template document to COPY_DOC_ID
+
+**[HINT]:** You can use the provided .envrc to the 

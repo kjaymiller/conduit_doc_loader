@@ -6,6 +6,8 @@ This project is used to create a new folder and planning document for
 - python (developed with python3.10 but should be compatible with 3.8+)
 - [Google Cloud Account](https://cloud.google.com)
 
+**[HINT]:** This project was developed with [direnv](https://direnv.net) and [asdf](https://asdf-vm.com). You can use the provided .envrc to ensure your directory is using the same environment as the development.
+
 ## Google Cloud Project Setup
 ### In Google Drive
 
@@ -48,7 +50,10 @@ Use `create_new_docs.py` to create a new folder with the planning doc.
 
 ### BEFORE YOU RUN
 <!-- TODO: Switch to Secrets --> 
-Add the id of the parent folder to the PARENT_FOLDER_ID   environment variable
-and the id of the template document to COPY_DOC_ID
+Add the id of the parent folder to the `PARENT_FOLDER_ID` environment variable
+and the id of the template document to `COPY_DOC_ID` environment variable.
 
-**[HINT]:** You can use the provided .envrc to the 
+To run enter `python create_new_docs.py [OPTIONS]`
+Here are the options available:
+`-c/--count`: Number of new Episode files to create.
+`-r/--replacement`: create a list of replacements, to update your template.

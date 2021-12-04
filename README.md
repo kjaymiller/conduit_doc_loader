@@ -8,8 +8,8 @@ You will need to create your own project. This project runs in test. Please foll
 
 The following scopes are used for this project: 
 
-- https://www.googleapis.com/auth/drive'
-- https://www.googleapis.com/auth/documents'
+- \https://www.googleapis.com/auth/drive\
+- \https://www.googleapis.com/auth/documents\
 
 <!-- (TODO - Reduce access to drives and docs to as limited as possible.) --> 
 

@@ -4,6 +4,7 @@ Docs and references:
   - [Create and populate folders  |  Google Drive API  |  Google Developers](https://developers.google.com/drive/api/v3/folder)
   Query from [Google Drive API in Python | List Files and Folders in a Google Drive Folder - YouTube](https://www.youtube.com/watch?v=kFR-O8BHIH4)
 """
+import logging
 import os
 from typing import Optional
 
@@ -65,14 +66,13 @@ def main(
 
         for request in replacements:
             requests.append(replace_text(request))
-            print(f"replacing {request}")
 
-        if requests:
-            docs.documents().batchUpdate(
-                documentId=planning_doc,
-                body={"requests": requests},
-            ).execute()
-
+        for r in requests:
+            logging.debug(f"replacing {r}")
+        docs.documents().batchUpdate(
+            documentId=planning_doc,
+            body={"requests": requests},
+        ).execute()
 
 
 def create_folder(episode_number: int, folder_name: str):

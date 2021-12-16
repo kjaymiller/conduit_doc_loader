@@ -1,6 +1,7 @@
 """Built with the boilerplate of the Google Docs API"""
 
 import os.path
+import os
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -16,18 +17,20 @@ creds = None
 # The file token.json stores the user's access and refresh tokens, and is
 # created automatically when the authorization flow completes for the first
 # time.
-if os.path.exists('token.json'):
-    creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+token_path='token.json'
+if os.path.exists(token_path):
+    creds = Credentials.from_authorized_user_file(token_path, SCOPES)
 # If there are no (valid) credentials available, let the user log in.
 if not creds or not creds.valid:
     if creds and creds.expired and creds.refresh_token:
+        os.remove(token_path)
         creds.refresh(Request())
     else:
         flow = InstalledAppFlow.from_client_secrets_file(
             'credentials.json', SCOPES)
         creds = flow.run_local_server(port=0)
     # Save the credentials for the next run
-    with open('token.json', 'w') as token:
+    with open(token_path, 'w') as token:
         token.write(creds.to_json())
 
 docs = build('docs', 'v1', credentials=creds)

@@ -54,25 +54,35 @@ def main(
         episode_number = last_episode + entry + 1
 
         folder_id = create_folder(episode_number, "Episode")
+        doc_types = [
+                ("Planning", os.environ.get('PLANNING_DOC_ID')),
+                ("Shownotes", os.environ.get('SHOWNOTES_DOC_ID')),
+                ]
 
-        # copy planning doc into created folder
-        planning_doc = create_doc(
-            name=f"Conduit {episode_number} Planning Doc",
-            parent=folder_id,
-        )
+        for name, id in doc_types:
+            # copy planning doc into created folder
+            doc_name=f"{os.environ.get('PODCAST_NAME')} {episode_number} {name} Doc"
+            doc_body = {
+                "name": doc_name,
+                "parents": [folder_id]
+            }
 
-        # process substitutions
-        requests = [replace_text(f"episode_number:{episode_number}")]
+            doc = create_doc(
+                doc_id= id,
+                doc_body=doc_body,
+            )
 
-        for request in replacements:
-            requests.append(replace_text(request))
+            requests = [replace_text(f"episode_number:{episode_number}")]
 
-        for r in requests:
-            logging.debug(f"replacing {r}")
-        docs.documents().batchUpdate(
-            documentId=planning_doc,
-            body={"requests": requests},
-        ).execute()
+            for request in replacements:
+                requests.append(replace_text(request))
+
+            for r in requests:
+                logging.debug(f"replacing {r}")
+            docs.documents().batchUpdate(
+                documentId=doc,
+                body={"requests": requests},
+            ).execute()
 
 
 def create_folder(episode_number: int, folder_name: str):
@@ -90,19 +100,14 @@ def create_folder(episode_number: int, folder_name: str):
     return file.get("id")
 
 
-def create_doc(name: str, parent: str) -> str:
+def create_doc(doc_id: str, doc_body: dict[str]) -> str:
     """Create two documents using the templates"""
-    shownotes_id = os.environ.get("COPY_DOC_ID")
-    shownotes_body = {
-        "name": name,
-        "parents": [parent],
-    }
     drive_response = (
-        files.files().copy(fileId=shownotes_id, body=shownotes_body).execute()
+        files.files().copy(fileId=doc_id, body=doc_body).execute()
     )
-    planning_doc_id = drive_response.get("id")
-    print(f"{planning_doc_id=}")
-    return planning_doc_id
+    drive_doc_id = drive_response.get("id")
+    print(f"{doc_id=}")
+    return drive_doc_id
 
 
 def replace_text(replacement_pattern: str) -> dict[str, str]:
